@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/fornecedor")
-public class ForncedorController {
+public class FornecedorController {
 
     @Autowired
     private FornecedorService service;
@@ -33,7 +33,7 @@ public class ForncedorController {
         return ResponseEntity.ok(fornecedor);
     }
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/novo")
     public ResponseEntity<FornecedorResponseDTO> cadastrar(@Valid @RequestBody FornecedorRequestDTO fornecedorRequestDTO){
 
         var fornecedor = service.cadastrar(fornecedorRequestDTO);
