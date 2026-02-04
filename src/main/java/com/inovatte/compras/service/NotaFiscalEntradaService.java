@@ -1,7 +1,7 @@
 package com.inovatte.compras.service;
 
 import com.inovatte.compras.dto.NotaFiscalEntradaRequestoDTO;
-import com.inovatte.compras.dto.NotaFiscalEntradaResponseDto;
+import com.inovatte.compras.dto.NotaFiscalEntradaResponseDTO;
 import com.inovatte.compras.model.NotaFiscalEntrada;
 import com.inovatte.compras.model.StatusNota;
 import com.inovatte.compras.repository.FornecedorRepository;
@@ -21,7 +21,7 @@ public class NotaFiscalEntradaService {
     @Autowired
     private FornecedorRepository fornecedorRepository;
 
-    public NotaFiscalEntradaResponseDto entrada(NotaFiscalEntradaRequestoDTO dto){
+    public NotaFiscalEntradaResponseDTO entrada(NotaFiscalEntradaRequestoDTO dto){
 
         NotaFiscalEntrada nota = new NotaFiscalEntrada();
 
@@ -39,22 +39,22 @@ public class NotaFiscalEntradaService {
 
         var notaSalva = notaFiscalEntradaRepository.save(nota);
 
-        return new NotaFiscalEntradaResponseDto(notaSalva);
+        return new NotaFiscalEntradaResponseDTO(notaSalva);
 
     }
 
-    public NotaFiscalEntradaResponseDto listarPorid(Long id){
+    public NotaFiscalEntradaResponseDTO listarPorid(Long id){
 
         var nota = notaFiscalEntradaRepository.findById(id).orElseThrow(() -> new RuntimeException("Nota de Entrada não encontrada."));
 
-        return new NotaFiscalEntradaResponseDto(nota);
+        return new NotaFiscalEntradaResponseDTO(nota);
     }
 
-    public List<NotaFiscalEntradaResponseDto> listarTodos(){
+    public List<NotaFiscalEntradaResponseDTO> listarTodos(){
 
-        List<NotaFiscalEntradaResponseDto> notas = notaFiscalEntradaRepository.findAll()
+        List<NotaFiscalEntradaResponseDTO> notas = notaFiscalEntradaRepository.findAll()
                                                     .stream()
-                                                    .map(NotaFiscalEntradaResponseDto::new)
+                                                    .map(NotaFiscalEntradaResponseDTO::new)
                                                     .toList();
 
 

@@ -1,15 +1,15 @@
 package com.inovatte.compras.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inovatte.compras.dto.ProdutoRequestDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "tb_produto")
 @Data
@@ -28,6 +28,10 @@ public class Produto {
     private LocalDateTime dataCadastro;
     private LocalDateTime dataAtualizacao;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemNotaEntrada> itemNotaEntradaList = new ArrayList<>();
+
 
 
     public Produto(){}
@@ -41,6 +45,8 @@ public class Produto {
         this.preco = dto.preco();
         this.dataCadastro = LocalDateTime.now();
         this.dataAtualizacao = LocalDateTime.now();
+
+
 
     }
 }

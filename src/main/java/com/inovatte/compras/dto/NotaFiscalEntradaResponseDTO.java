@@ -7,7 +7,7 @@ import com.inovatte.compras.model.StatusNota;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record NotaFiscalEntradaResponseDto(
+public record NotaFiscalEntradaResponseDTO(
         Long id,
         String numero,
         String serie,
@@ -17,7 +17,7 @@ public record NotaFiscalEntradaResponseDto(
         BigDecimal valorTotal,
         StatusNota statusNota) {
 
-    public NotaFiscalEntradaResponseDto(NotaFiscalEntrada notaFiscalEntrada){
+    public NotaFiscalEntradaResponseDTO(NotaFiscalEntrada notaFiscalEntrada){
         this(
                 notaFiscalEntrada.getId(),
                 notaFiscalEntrada.getNumero(),

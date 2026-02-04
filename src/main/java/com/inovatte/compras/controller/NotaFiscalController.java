@@ -1,7 +1,7 @@
 package com.inovatte.compras.controller;
 
 import com.inovatte.compras.dto.NotaFiscalEntradaRequestoDTO;
-import com.inovatte.compras.dto.NotaFiscalEntradaResponseDto;
+import com.inovatte.compras.dto.NotaFiscalEntradaResponseDTO;
 import com.inovatte.compras.model.StatusNota;
 import com.inovatte.compras.service.NotaFiscalEntradaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +19,20 @@ public class NotaFiscalController {
     private NotaFiscalEntradaService notaFiscalEntradaService;
 
     @PostMapping
-    public ResponseEntity<NotaFiscalEntradaResponseDto> entrada(@RequestBody NotaFiscalEntradaRequestoDTO notaFiscalEntradaRequestoDTO){
+    public ResponseEntity<NotaFiscalEntradaResponseDTO> entrada(@RequestBody NotaFiscalEntradaRequestoDTO notaFiscalEntradaRequestoDTO){
         var nota = notaFiscalEntradaService.entrada(notaFiscalEntradaRequestoDTO);
         return ResponseEntity.ok(nota);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<NotaFiscalEntradaResponseDto> listarPorId(@PathVariable Long id){
+    public ResponseEntity<NotaFiscalEntradaResponseDTO> listarPorId(@PathVariable Long id){
         var nota = notaFiscalEntradaService.listarPorid(id);
 
         return ResponseEntity.ok(nota);
     }
 
     @GetMapping
-    public ResponseEntity<List<NotaFiscalEntradaResponseDto>> litarTodas(){
+    public ResponseEntity<List<NotaFiscalEntradaResponseDTO>> litarTodas(){
 
         var notas = notaFiscalEntradaService.listarTodos();
 
