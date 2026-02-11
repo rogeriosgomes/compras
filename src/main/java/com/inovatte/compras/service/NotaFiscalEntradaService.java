@@ -76,7 +76,7 @@ public class NotaFiscalEntradaService {
 
     //desenvolver alteração da nota
     //desenvolver exclusão da nota
-    //desenvolver calcular valor Total da nota
+    //desenvolver calcular valor Total da nota - ajustar o estoque
 
 
 }

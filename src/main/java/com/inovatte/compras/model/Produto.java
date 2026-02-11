@@ -31,6 +31,9 @@ public class Produto {
     @JsonIgnore
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemNotaEntrada> itemNotaEntradaList = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name= "estoque_id")
+    private Estoque estoque;
 
 
 
