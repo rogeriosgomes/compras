@@ -22,7 +22,6 @@ public class Produto {
     private String nome;
     private String descricao;
     private BigDecimal preco;
-    private int quantidadeEstoque;
     private String sku;
     private boolean ativo;
     private LocalDateTime dataCadastro;
@@ -31,8 +30,7 @@ public class Produto {
     @JsonIgnore
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemNotaEntrada> itemNotaEntradaList = new ArrayList<>();
-    @OneToOne
-    @JoinColumn(name= "estoque_id")
+    @OneToOne(mappedBy = "produto")
     private Estoque estoque;
 
 
@@ -44,7 +42,6 @@ public class Produto {
         this.descricao = dto.descricao();
         this.sku   = dto.sku();
         this.ativo = true;
-        this.quantidadeEstoque = 0;
         this.preco = dto.preco();
         this.dataCadastro = LocalDateTime.now();
         this.dataAtualizacao = LocalDateTime.now();

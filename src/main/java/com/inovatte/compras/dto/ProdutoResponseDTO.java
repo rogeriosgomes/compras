@@ -10,7 +10,6 @@ public record ProdutoResponseDTO(
         String nome,
         String descricao,
         BigDecimal preco,
-        int quantidadeEstoque,
         boolean ativo
 ) {
 
@@ -21,7 +20,6 @@ public record ProdutoResponseDTO(
                 produto.getNome(),
                 produto.getDescricao(),
                 produto.getPreco(),
-                produto.getQuantidadeEstoque(),
                 produto.isAtivo()
         );
     }

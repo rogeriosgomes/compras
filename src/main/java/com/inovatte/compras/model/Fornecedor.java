@@ -1,9 +1,7 @@
 package com.inovatte.compras.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerator;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.inovatte.compras.dto.FornecedorRequestDTO;
 import jakarta.persistence.*;
 import lombok.Data;

@@ -12,13 +12,13 @@ import java.util.List;
 
 @RequestMapping("/nota")
 @RestController
-public class NotaFiscalController {
+public class NotaFiscalEntradaController {
 
 
     @Autowired
     private NotaFiscalEntradaService notaFiscalEntradaService;
 
-    @PostMapping
+    @PostMapping("/novo")
     public ResponseEntity<NotaFiscalEntradaResponseDTO> entrada(@RequestBody NotaFiscalEntradaRequestoDTO notaFiscalEntradaRequestoDTO){
         var nota = notaFiscalEntradaService.entrada(notaFiscalEntradaRequestoDTO);
         return ResponseEntity.ok(nota);
@@ -42,6 +42,10 @@ public class NotaFiscalController {
     @PutMapping("/confirmar/{id}")
     public ResponseEntity<String> confirmar(@PathVariable Long id, String retorno){
 
+
+        notaFiscalEntradaService.CalcularValorTotal(id);
+        notaFiscalEntradaService.AjustarEstoque(id);
+
         var mensagem = notaFiscalEntradaService.alterarStatus(id, StatusNota.CONFIRMADA, "Nota fiscal de entrada confirmada.");
 
         return mensagem;
@@ -53,5 +57,15 @@ public class NotaFiscalController {
         var mensagem = notaFiscalEntradaService.alterarStatus(id, StatusNota.CONFIRMADA, "Nota fiscal de entrada cancelada.");
 
         return mensagem;
+    }
+
+    @GetMapping("calcular/{id}")
+    public ResponseEntity<String> RecalcularNota(@PathVariable Long id){
+
+        notaFiscalEntradaService.CalcularValorTotal(id);
+        notaFiscalEntradaService.AjustarEstoque(id);
+
+        return ResponseEntity.ok("Nota calculada");
+
     }
 }

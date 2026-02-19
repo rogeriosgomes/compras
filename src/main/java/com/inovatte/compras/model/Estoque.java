@@ -13,7 +13,10 @@ public class Estoque {
     private Integer quantidadeAtual;
     private Integer quantidadeReservada;
 
-    @OneToOne(mappedBy = "estoque")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name= "produto_id")
     private Produto produto;
+
+
 
 }
