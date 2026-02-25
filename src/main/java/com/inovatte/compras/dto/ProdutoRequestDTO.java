@@ -7,12 +7,12 @@ import java.math.BigDecimal;
 
 
 public record ProdutoRequestDTO(
-                                @NotBlank(message = "O Nome é Obrigatório")
+                                @NotBlank(message = "O campo Nome é Obrigatório")
                                 String nome,
                                 String descricao,
-                                @NotNull(message = "O Preço é obrigatório")
+                                @NotNull(message = "O campo Preço é obrigatório")
                                 BigDecimal preco,
-                                @NotBlank(message = "O Sku é obrigatório")
+                                @NotBlank(message = "O campo SKU é obrigatório")
                                 String sku) {
 
 

@@ -2,6 +2,8 @@ package com.inovatte.compras.service;
 
 import com.inovatte.compras.dto.ProdutoRequestDTO;
 import com.inovatte.compras.dto.ProdutoResponseDTO;
+import com.inovatte.compras.exceptions.MessageExceptions;
+import com.inovatte.compras.exceptions.RecursoNaoEncontradoException;
 import com.inovatte.compras.model.Produto;
 import com.inovatte.compras.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class ProdutoService {
 
     public ProdutoResponseDTO listaId(Long id){
 
-        var produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado."));
+        var produto = produtoRepository.findById(id).orElseThrow(() -> new RecursoNaoEncontradoException(MessageExceptions.PRODUTO_NAO_ECONTRADO));
 
         return new ProdutoResponseDTO(produto);
     }
